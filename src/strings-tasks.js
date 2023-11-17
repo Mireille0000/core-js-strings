@@ -197,8 +197,21 @@ function removeLastOccurrences(str, value) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  const result = [];
+
+  if (str) {
+    for (let i = 0; i < str.length; i += 1) {
+      result.push(parseInt(str.charCodeAt(i), 10));
+    }
+    return result.reduce((acc, item) => {
+      let accum = acc;
+      accum += item;
+      return accum;
+    }, 0);
+  }
+
+  return 0;
 }
 
 /**
@@ -212,8 +225,8 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
@@ -227,8 +240,8 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
@@ -244,8 +257,15 @@ function endsWith(/* str, substr */) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  const minToStr = minutes.toString().padStart(2, '0');
+  const secToStr = seconds.toString().padStart(2, '0');
+
+  if (minutes < 10 || seconds < 10) {
+    return `${minToStr}:${secToStr}`;
+  }
+
+  return `${minutes}:${seconds}`;
 }
 
 /**
@@ -258,8 +278,14 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  let result = '';
+
+  for (let i = 0; i < str.length; i += 1) {
+    result += str[str.length - 1 - i];
+  }
+
+  return result;
 }
 
 /**
